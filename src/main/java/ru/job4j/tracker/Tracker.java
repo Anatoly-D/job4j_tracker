@@ -45,10 +45,11 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
+        int index = indexOf(id);
         boolean result = false;
-        if (findById(id) != null) {
-            items[id].setId(item.getId());
-            items[id].setName(item.getName());
+        if (index != -1 && id == item.getId()) {
+            items[index].setId(item.getId());
+            items[index].setName(item.getName());
             result = true;
         }
         return result;
