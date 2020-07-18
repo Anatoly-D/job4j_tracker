@@ -6,7 +6,6 @@ public class Matches {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int matchQty = 11;
-        boolean run = true;
         System.out.println("Начинаем игру в спички!");
 
         while (matchQty > 0) {
@@ -25,7 +24,7 @@ public class Matches {
                     System.out.println("Некорректный ввод. Введите число от 1 до 3!");
             }
         }
-        System.out.println("Ура, вы выиграли!3");
+        System.out.println("Ура, вы выиграли!");
 
     }
 }
