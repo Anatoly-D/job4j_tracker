@@ -8,7 +8,7 @@ public class Matches {
         int matchQty = 11;
         int userInput;
         int currentUser = 0;
-        int gamesQty = 3;
+        int gamesQty = 2;
         System.out.println("Начинаем игру в спички!");
 
         while (matchQty > 0) {
@@ -26,6 +26,5 @@ public class Matches {
 
     private static boolean checkInput(int userInput) {
         return userInput == 1 || userInput == 2 || userInput == 3;
-
     }
 }
