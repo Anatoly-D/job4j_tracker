@@ -10,6 +10,8 @@ public class StartUI {
         int input;
         boolean run = true;
         while (run) {
+            item = null;
+            items = null;
             this.showMenu();
             System.out.print("Select: ");
             switch (scanner.nextInt()) {
@@ -30,7 +32,11 @@ public class StartUI {
                     item = tracker.findById(scanner.nextInt());
                     if (item != null) {
                         System.out.print("Enter new name for Item with id " + item.getId() + System.lineSeparator());
-                        tracker.replace(item.getId(), new Item(scanner.next()));
+                        if (tracker.replace(item.getId(), new Item(scanner.next()))) {
+                            System.out.println("Item was replaced");
+                        } else {
+                            System.out.println("Something went wrong. Try again");
+                        }
                     } else {
                         System.out.println(System.lineSeparator() + "Item with such id doesn't exist.");
                     }
@@ -40,8 +46,11 @@ public class StartUI {
                     System.out.println("==== Enter Item Id to Delete ====");
                     item = tracker.findById(scanner.nextInt());
                     if (item != null) {
-                        tracker.delete(item.getId());
-                        System.out.print("Item with id " + item.getId() + " was deleted" + System.lineSeparator());
+                        if (tracker.delete(item.getId())) {
+                            System.out.print("Item with id " + item.getId() + " was deleted" + System.lineSeparator());
+                        } else {
+                            System.out.println("Something went wrong. Try again");
+                        }
                     } else {
                         System.out.println(System.lineSeparator() + "Item with such id doesn't exist.");
                     }
@@ -51,7 +60,6 @@ public class StartUI {
                     System.out.println("==== Enter Item Id to Search ====");
                     item = tracker.findById(scanner.nextInt());
                     if (item != null) {
-                        tracker.delete(item.getId());
                         System.out.print("Item with id " + item.getId() + " has name " + item.getName() + System.lineSeparator());
                     } else {
                         System.out.println("Item with such id doesn't exist.");
