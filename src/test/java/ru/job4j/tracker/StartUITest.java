@@ -16,7 +16,7 @@ public class StartUITest {
         StartUI.createItem(input,tracker);
         StartUI.createItem(input,tracker);
         StartUI.createItem(input,tracker);
-        Item[] expectedItems = {new Item(1, answers[0]),new Item(1, answers[1]), new Item(1, answers[2])};
+        Item[] expectedItems = {new Item(1, answers[0]), new Item(2, answers[1]), new Item(3, answers[2])};
         assertThat(tracker.findAll(), is(expectedItems));
     }
 }
