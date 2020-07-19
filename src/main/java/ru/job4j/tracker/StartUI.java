@@ -6,8 +6,8 @@ public class StartUI {
     public void init(Scanner scanner, Tracker tracker) {
         Item[] items;
         Item item;
-        String name;
-        int input;
+        String inputName;
+        int inputId;
         boolean run = true;
         while (run) {
             item = null;
@@ -21,68 +21,70 @@ public class StartUI {
                     item = new Item(scanner.next());
                     tracker.add(item);
                     System.out.println("New Item with id = " + item.getId() + " and name = \"" + item.getName() + "\" was added");
+                    System.out.println();
                     break;
                 case 1:
                     System.out.println("==== Tracker Items list ====");
                     outputItems(tracker.findAll());
+                    System.out.println();
                     break;
                 case 2:
-                    System.out.println();
-                    System.out.println("==== Enter Item Id to Edit ====");
-                    item = tracker.findById(scanner.nextInt());
-                    if (item != null) {
-                        System.out.print("Enter new name for Item with id " + item.getId() + System.lineSeparator());
-                        if (tracker.replace(item.getId(), new Item(scanner.next()))) {
-                            System.out.println("Item was replaced");
-                        } else {
-                            System.out.println("Something went wrong. Try again");
-                        }
+                    System.out.println("==== Edit Item ====");
+                    System.out.println("Enter Item Id: ");
+                    inputId = scanner.nextInt();
+                    System.out.println("Enter Item Name: ");
+                    inputName = scanner.next();
+                    if (tracker.replace(item.getId(), new Item(inputId, inputName))) {
+                        System.out.println("Item was replaced");
                     } else {
-                        System.out.println(System.lineSeparator() + "Item with such id doesn't exist.");
+                        System.out.println("Something went wrong. Try again");
                     }
+                    System.out.println();
                     break;
                 case 3:
-                    System.out.println();
-                    System.out.println("==== Enter Item Id to Delete ====");
-                    item = tracker.findById(scanner.nextInt());
-                    if (item != null) {
-                        if (tracker.delete(item.getId())) {
-                            System.out.print("Item with id " + item.getId() + " was deleted" + System.lineSeparator());
-                        } else {
-                            System.out.println("Something went wrong. Try again");
-                        }
+                    System.out.println("==== Delete Item ====");
+                    System.out.println("Enter Item Id: ");
+                    inputId = scanner.nextInt();
+                    if (tracker.delete(inputId)) {
+                        System.out.println("Item was replaced");
                     } else {
-                        System.out.println(System.lineSeparator() + "Item with such id doesn't exist.");
+                        System.out.println("Something went wrong. Try again");
                     }
+                    System.out.println();
                     break;
                 case 4:
-                    System.out.println();
-                    System.out.println("==== Enter Item Id to Search ====");
-                    item = tracker.findById(scanner.nextInt());
-                    if (item != null) {
-                        System.out.print("Item with id " + item.getId() + " has name " + item.getName() + System.lineSeparator());
+                    System.out.println("==== Find item by Id ====");
+                    System.out.println("Enter Item Id: ");
+                    inputId = scanner.nextInt();
+                    item = tracker.findById(inputId);
+                    if ( item != null) {
+                        System.out.println("Item was found: id = " + inputId + " name = \"" + item.getName() + "\"");
                     } else {
-                        System.out.println("Item with such id doesn't exist.");
+                        System.out.println("Something went wrong. Try again");
                     }
+                    System.out.println();
                     break;
                 case 5:
-                    System.out.println();
-                    System.out.println("==== Enter Item Name to Search ====");
-                    items = tracker.findByName(scanner.next());
-                    if (items.length != 0) {
-                        System.out.println("==== Items with name " + items[0].getName() + " ====");
+                    System.out.println("==== Find item by Name ====");
+                    System.out.println("Enter Item Name: ");
+                    inputName = scanner.next();
+                    items = tracker.findByName(inputName);
+                    if ( items.length != 0) {
+                        System.out.println("Items were found:");
                         outputItems(items);
-                        System.out.println();
                     } else {
-                        System.out.println("Item with such name doesn't exist.");
+                        System.out.println("Something went wrong. Try again");
                     }
+                    System.out.println();
                     break;
                 case 6:
                     run = false;
                     System.out.println("Exit!");
+                    System.out.println();
                     break;
                 default:
                     System.out.println("Please choose correct menu item!");
+                    System.out.println();
             }
         }
     }
@@ -94,7 +96,6 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println();
         System.out.println("Menu.");
         System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
@@ -102,7 +103,8 @@ public class StartUI {
         System.out.println("3. Delete item");
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
-        System.out.println("6. Exit Program" + System.lineSeparator());
+        System.out.println("6. Exit Program");
+        System.out.println();
     }
 
     public static void main(String[] args) {
