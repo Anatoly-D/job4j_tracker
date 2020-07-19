@@ -1,13 +1,9 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    private static Item[] items;
-    private static Item item;
-    private static String inputName;
-    private static int inputId;
-    private static boolean run = true;
 
     public static void createItem(Input input, Tracker tracker) {
+        Item item;
         System.out.println("==== Create a new Item ====");
         item = new Item(input.askStr("Enter name: "));
         tracker.add(item);
@@ -20,6 +16,8 @@ public class StartUI {
         System.out.println();
     }
     public static void editItem(Input input, Tracker tracker) {
+        String inputName;
+        int inputId;
         System.out.println("==== Edit Item ====");
         inputId = input.askInt("Enter Item Id: ");
         inputName = input.askStr("Enter Item Name: ");
@@ -31,6 +29,7 @@ public class StartUI {
         System.out.println();
     }
     public static void deleteItem(Input input, Tracker tracker) {
+        int inputId;
         System.out.println("==== Delete Item ====");
         inputId = input.askInt("Enter Item Id: ");
         if (tracker.delete(inputId)) {
@@ -41,6 +40,8 @@ public class StartUI {
         System.out.println();
     }
     public static void findItemById(Input input, Tracker tracker) {
+        Item item;
+        int inputId;
         System.out.println("==== Find item by Id ====");
         inputId = input.askInt("Enter Item Id: ");
         item = tracker.findById(inputId);
@@ -52,6 +53,8 @@ public class StartUI {
         System.out.println();
     }
     public static void findItemByName(Input input, Tracker tracker) {
+        Item[] items;
+        String inputName;
         System.out.println("==== Find item by Name ====");
         inputName = input.askStr("Enter Item Name: ");
         items = tracker.findByName(inputName);
@@ -63,13 +66,9 @@ public class StartUI {
         }
         System.out.println();
     }
-    public static void exit(Input input, Tracker tracker) {
-        run = false;
-        System.out.println("Exit!");
-        System.out.println();
-    }
 
     public void init(Input input, Tracker tracker) {
+        boolean run = true;
         while (run) {
             this.showMenu();
             switch (input.askInt("Select: ")) {
@@ -92,7 +91,9 @@ public class StartUI {
                     StartUI.findItemByName(input, tracker);
                     break;
                 case 6:
-                    StartUI.exit(input, tracker);
+                    run = false;
+                    System.out.println("Exit!");
+                    System.out.println();
                     break;
                 default:
                     System.out.println("Please choose correct menu item!");
