@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import javax.swing.*;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
@@ -139,5 +141,45 @@ public class StartUITest {
                                             "Menu." + LN +
                                             "0. Find item by Id" + LN +
                                             "1. Exit" + LN));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] { "7", "0" }
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "0. Exit%n"
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu.%n"
+                                + "0. Exit%n"
+                )
+        ));
+    }
+
+    @Test
+    public void whenValidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] { "0" }
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu.%n"
+                                + "0. Exit%n")
+        ));
     }
 }
