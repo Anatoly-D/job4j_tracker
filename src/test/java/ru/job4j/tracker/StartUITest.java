@@ -88,7 +88,13 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN + "0. Tracker Items list" + LN + "1. Exit" + LN + "1\tnew item" + LN + "Menu." + LN + "0. Tracker Items list" + LN + "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN +
+                                            "0. Tracker Items list" + LN +
+                                            "1. Exit" + LN +
+                                            "1\tnew item" + LN +
+                                            "Menu." + LN +
+                                            "0. Tracker Items list" + LN +
+                                            "1. Exit" + LN));
     }
 
     @Test
@@ -104,7 +110,13 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN + "0. Find item by Name" + LN + "1. Exit" + LN + "1\tnew item" + LN + "Menu." + LN + "0. Find item by Name" + LN + "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN +
+                                            "0. Find item by Name" + LN +
+                                            "1. Exit" + LN +
+                                            "1\tnew item" + LN +
+                                            "Menu." + LN +
+                                            "0. Find item by Name" + LN +
+                                            "1. Exit" + LN));
     }
 
     @Test
@@ -120,6 +132,12 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN + "0. Find item by Id" + LN + "1. Exit" + LN + "1\tnew item" + LN + "Menu." + LN + "0. Find item by Id" + LN + "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN +
+                                            "0. Find item by Id" + LN +
+                                            "1. Exit" + LN +
+                                            "1\tnew item" + LN +
+                                            "Menu." + LN +
+                                            "0. Find item by Id" + LN +
+                                            "1. Exit" + LN));
     }
 }
