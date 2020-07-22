@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import javax.naming.Context;
+
 public class ValidateInput extends ConsoleInput {
     @Override
     public int askInt(String question) {
@@ -9,8 +11,6 @@ public class ValidateInput extends ConsoleInput {
             try {
                 value = super.askInt(question);
                 invalid = false;
-            } catch (IllegalStateException moe) {
-                System.out.println("Please select key from menu.");
             } catch (NumberFormatException nfe) {
                 System.out.println("Incorrect input format. Try again.");
             }
