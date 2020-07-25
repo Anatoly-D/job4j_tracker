@@ -1,0 +1,41 @@
+package ru.job4j.ex;
+
+public class LoadOrder {
+    private static String static_field = echo("static field");
+
+    private static final String STATIC_FINAL_FIELD = echo("static final field");
+
+    {
+        echo("not-static block");
+    }
+
+    static {
+        echo("static block");
+    }
+
+    private String surname = echo("field");
+
+    private final String name = echo("final field");
+
+    public LoadOrder(String msg) {
+        echo("constructor itself");
+        echo("constructor " + msg);
+    }
+
+    public static String echo(String text) {
+        System.out.println(text);
+        return text;
+    }
+
+    public static final void say() {
+        echo("static final method say");
+    }
+
+    public static void main(String[] args) {
+        LoadOrder.say();
+        echo("static void main");
+        LoadOrder order = new LoadOrder("main");
+    }
+
+
+}
