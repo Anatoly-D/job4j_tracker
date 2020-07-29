@@ -19,7 +19,11 @@ public class PhoneDictionary {
         String concatPerson;
         for (Person person : persons) {
             concatPerson = person.getAddress() + person.getName() + person.getPhone() + person.getSurname();
-            if (concatPerson.contains(key)) {
+            if (person.getSurname().contains(key) ||
+                    person.getPhone().contains(key) ||
+                    person.getName().contains(key) ||
+                    person.getAddress().contains(key)) {
+
                 result.add(person);
             }
         }
