@@ -1,13 +1,11 @@
 package ru.job4j.test;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        LinkedList<String> strings = new LinkedList<>();
-        strings.add("one");
-        strings.add("two");
-        strings.add("three");
+        List<String> strings = List.of("first", "second", "third");
         
         for (String string : strings) {
             System.out.println(string);
