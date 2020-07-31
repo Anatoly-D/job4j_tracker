@@ -1,5 +1,6 @@
 package ru.job4j.test;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.*;
 
 public class Test {
@@ -10,10 +11,6 @@ public class Test {
         map.put("df@yandex.ru", "df Arsentev");
         map.put("zx@yandex.ru", "zx Arsentev");
 
-        Set<String> set = map.keySet();
 
-        for (Map.Entry<String, String> stringStringEntry : map.entrySet()) {
-            System.out.println(stringStringEntry.getKey() + " " + stringStringEntry.getValue());
-        }
     }
 }
