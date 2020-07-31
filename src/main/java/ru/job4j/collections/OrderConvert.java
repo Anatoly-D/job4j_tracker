@@ -8,7 +8,6 @@ public class OrderConvert {
         HashMap<String, Order> map = new HashMap<>();
         for (Order order : orders) {
             map.put(order.getNumber(), order);
-            System.out.println("");
         }
         return map;
     }
