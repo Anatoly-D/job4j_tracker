@@ -1,7 +1,7 @@
 package ru.job4j.ex;
 
 public class LoadOrder {
-    private static String static_field = echo("static field");
+    private static String staticField = echo("static field");
 
     private static final String STATIC_FINAL_FIELD = echo("static final field");
 
@@ -36,6 +36,4 @@ public class LoadOrder {
         echo("static void main");
         LoadOrder order = new LoadOrder("main");
     }
-
-
 }

@@ -23,7 +23,8 @@ public class Library {
     private static void outputBooksFilter(Book[] books, String filter) {
         for (int i = 0; i < books.length; i++) {
             if (books[i].getBookName().equals(filter)) {
-                System.out.println("The Book \"" + books[i].getBookName() + "\" has " + books[i].getPagesQty() + " pages.");
+                System.out.println("The Book \"" + books[i].getBookName()
+                        + "\" has " + books[i].getPagesQty() + " pages.");
             }
         }
         System.out.println();
@@ -37,7 +38,8 @@ public class Library {
 
     private static void outputBooks(Book[] books) {
         for (int i = 0; i < books.length; i++) {
-            System.out.println("The Book \"" + books[i].getBookName() + "\" has " + books[i].getPagesQty() + " pages.");
+            System.out.println("The Book \"" + books[i].getBookName()
+                    + "\" has " + books[i].getPagesQty() + " pages.");
         }
         System.out.println();
     }

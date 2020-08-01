@@ -16,10 +16,10 @@ public class Battery {
         Battery first = new Battery(10);
         Battery second = new Battery(12);
 
-        System.out.println("Initial state. First: " + first.capacity + " Second: " + second.capacity);
+        System.out.println("Initial state. First: " + first.capacity
+                + " Second: " + second.capacity);
         first.exchange(second);
-        System.out.println("After exchange. First: " + first.capacity + " Second: " + second.capacity);
+        System.out.println("After exchange. First: " + first.capacity
+                + " Second: " + second.capacity);
     }
-
-
 }

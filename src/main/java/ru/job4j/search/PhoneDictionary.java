@@ -3,7 +3,7 @@ package ru.job4j.search;
 import java.util.ArrayList;
 
 public class PhoneDictionary {
-    private ArrayList<Person> persons = new ArrayList<Person>();
+    private ArrayList<Person> persons = new ArrayList<>();
 
     public void add(Person person) {
         this.persons.add(person);
@@ -16,13 +16,11 @@ public class PhoneDictionary {
      */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        String concatPerson;
         for (Person person : persons) {
-            concatPerson = person.getAddress() + person.getName() + person.getPhone() + person.getSurname();
-            if (person.getSurname().contains(key) ||
-                    person.getPhone().contains(key) ||
-                    person.getName().contains(key) ||
-                    person.getAddress().contains(key)) {
+            if (person.getSurname().contains(key)
+                    || person.getPhone().contains(key)
+                    || person.getName().contains(key)
+                    || person.getAddress().contains(key)) {
 
                 result.add(person);
             }

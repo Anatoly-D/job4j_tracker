@@ -12,7 +12,8 @@ public class Matches {
         System.out.println("Начинаем игру в спички!");
 
         while (matchQty > 0) {
-            System.out.println("На столе " + matchQty + " спичек, игрок " + (currentUser % gamersQty + 1) + " возьмите от 1 до 3 спичек:");
+            System.out.println("На столе " + matchQty + " спичек, игрок "
+                    + (currentUser % gamersQty + 1) + " возьмите от 1 до 3 спичек:");
             userInput = scanner.nextInt();
             if (checkInput(userInput)) {
                 matchQty -= userInput;

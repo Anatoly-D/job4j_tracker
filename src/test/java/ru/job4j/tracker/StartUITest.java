@@ -1,9 +1,6 @@
 package ru.job4j.tracker;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
-
-import javax.swing.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
@@ -72,8 +69,8 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Exit" + System.lineSeparator()
         ));
     }
 
@@ -90,13 +87,13 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN +
-                                            "0. Tracker Items list" + LN +
-                                            "1. Exit" + LN +
-                                            "1\tnew item" + LN +
-                                            "Menu." + LN +
-                                            "0. Tracker Items list" + LN +
-                                            "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN
+                                        + "0. Tracker Items list" + LN
+                                        + "1. Exit" + LN
+                                        + "1\tnew item" + LN
+                                        + "Menu." + LN
+                                        + "0. Tracker Items list" + LN
+                                        + "1. Exit" + LN));
     }
 
     @Test
@@ -112,13 +109,13 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN +
-                                            "0. Find item by Name" + LN +
-                                            "1. Exit" + LN +
-                                            "1\tnew item" + LN +
-                                            "Menu." + LN +
-                                            "0. Find item by Name" + LN +
-                                            "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN
+                                        + "0. Find item by Name" + LN
+                                        + "1. Exit" + LN
+                                        + "1\tnew item" + LN
+                                        + "Menu." + LN
+                                        + "0. Find item by Name" + LN
+                                        + "1. Exit" + LN));
     }
 
     @Test
@@ -134,36 +131,36 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + LN +
-                                            "0. Find item by Id" + LN +
-                                            "1. Exit" + LN +
-                                            "1\tnew item" + LN +
-                                            "Menu." + LN +
-                                            "0. Find item by Id" + LN +
-                                            "1. Exit" + LN));
+        assertThat(out.toString(), is("Menu." + LN
+                                            + "0. Find item by Id" + LN
+                                            + "1. Exit" + LN
+                                            + "1\tnew item" + LN
+                                            + "Menu." + LN
+                                            + "0. Find item by Id" + LN
+                                            + "1. Exit" + LN));
     }
 
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] { "7", "0" });
+        Input in = new StubInput(new String[] {"7", "0"});
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(String.format("Menu." + LN +
-                                                    "0. Exit" + LN +
-                                                    "Wrong input, you can select: 0 .. 0" + LN +
-                                                    "Menu." + LN +
-                                                    "0. Exit" + LN)));
+        assertThat(out.toString(), is(String.format("Menu." + LN
+                                                    + "0. Exit" + LN
+                                                    + "Wrong input, you can select: 0 .. 0" + LN
+                                                    + "Menu." + LN
+                                                    + "0. Exit" + LN)));
     }
 
     @Test
     public void whenValidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] { "0" }
+                new String[] {"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
