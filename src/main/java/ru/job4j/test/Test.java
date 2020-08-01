@@ -11,6 +11,11 @@ public class Test {
         map.put("df@yandex.ru", "df Arsentev");
         map.put("zx@yandex.ru", "zx Arsentev");
 
+        List<Integer> list = new LinkedList<>();
+        list.add(5);
+        list.add(6);
 
+        int[] ints = {1, 3, 4};
+        List<int[]> ints1 = Arrays.asList(ints);
     }
 }
