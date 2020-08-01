@@ -10,17 +10,17 @@ public class LexSort implements Comparator<String> {
         leftArr = leftArr[0].split("\\.");
         rightArr = rightArr[0].split("\\.");
 
-        int maxLength = leftArr.length >= rightArr.length ? leftArr.length : rightArr.length;
+        int minLength = leftArr.length < rightArr.length ? leftArr.length : rightArr.length;
         int leftNumber;
         int rightNumber;
 
-        for (int i = 0; i < maxLength; i++) {
+        for (int i = 0; i < minLength; i++) {
             leftNumber = Integer.valueOf(leftArr[i]);
             rightNumber = Integer.valueOf(rightArr[i]);
             if (leftNumber != rightNumber) {
                 return leftNumber - rightNumber;
             }
         }
-        return 0;
+        return leftArr.length - rightArr.length;
     }
 }
