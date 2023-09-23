@@ -1,7 +1,6 @@
 package oop;
 
 public class CarMain {
-    //private String brand;
     private String model;
 
     public class Transmition {
