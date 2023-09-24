@@ -1,5 +1,8 @@
 package oop;
 
+import java.util.Calendar;
+import java.util.Formatter;
+
 public class CarMain {
     private String model;
 
@@ -26,5 +29,8 @@ public class CarMain {
         CarMain.Engine engine = carMain.new Engine();
         CarMain.Transmition transmition = carMain.new Transmition();
         engine.engineMethod();
+
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(calendar.getTime());
     }
 }
