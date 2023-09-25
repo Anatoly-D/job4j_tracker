@@ -30,16 +30,23 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit Item ===");
-                System.out.print("Enter ID: ");
+                System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter Name of new Item: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
                 if (tracker.replace(id, newItem)) {
-                    System.out.println("Item was replaced");
+                    System.out.println("Item was replaced.");
                 } else {
-                    System.out.println("Item replacement error");
+                    System.out.println("Item replacement error.");
                 }
+            } else if (select == 3) {
+                System.out.println("=== Delete item ===");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                tracker.delete(id);
+                Item item = tracker.findById(id);
+                System.out.println(item == null ? "The Item was deleted." : "Item deletion error.");
             } else if (select == 6) {
                 run = false;
             }
