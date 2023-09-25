@@ -18,6 +18,17 @@ public class StartUI {
                 Item newItem = new Item(name);
                 tracker.add(newItem);
                 System.out.println("New Item is created: " + newItem.getName());
+            } else if (select == 1) {
+                System.out.println("=== Show all Items ===");
+                Item[] allItems = tracker.findAll();
+                if (allItems.length > 0) {
+                    for (Item item : allItems) {
+                        System.out.println(item);
+                    }
+                    System.out.println("");
+                } else {
+                    System.out.println("There are no Items in Tracker.\n");
+                }
             } else if (select == 6) {
                 run = false;
             }
