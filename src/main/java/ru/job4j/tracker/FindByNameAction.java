@@ -22,7 +22,7 @@ public class FindByNameAction implements UserAction {
                 output.println(item);
             }
         } else {
-            output.println("Items with the name: " + name + " weren't found.");
+            output.println("Items with the name: \"" + name + "\" weren't found.");
         }
         return true;
     }
