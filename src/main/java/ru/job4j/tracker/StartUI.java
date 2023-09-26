@@ -24,7 +24,7 @@ public class StartUI {
         }
     }
 
-    private static void findByName(Input input, Tracker tracker) {
+    public static void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find Items by name ===");
         String name = input.askStr("Enter name: ");
         Item[] items = tracker.findByName(name);
@@ -37,7 +37,7 @@ public class StartUI {
         }
     }
 
-    private static void findById(Input input, Tracker tracker) {
+    public static void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by id ===");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
@@ -48,7 +48,7 @@ public class StartUI {
         }
     }
 
-    private static void deleteItem(Input input, Tracker tracker) {
+    public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         int id = input.askInt("Enter id: ");
         tracker.delete(id);
@@ -56,7 +56,7 @@ public class StartUI {
         System.out.println(item == null ? "The Item was deleted." : "Item deletion error.");
     }
 
-    private static void editItem(Input input, Tracker tracker) {
+    public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit Item ===");
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter Name of new Item: ");
@@ -68,7 +68,7 @@ public class StartUI {
         }
     }
 
-    private static void showAllItems(Input input, Tracker tracker) {
+    public static void showAllItems(Input input, Tracker tracker) {
         System.out.println("=== Show all Items ===");
         Item[] allItems = tracker.findAll();
         if (allItems.length > 0) {
@@ -80,7 +80,7 @@ public class StartUI {
         }
     }
 
-    private static void createItem(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
         String name = input.askStr("Enter Name: ");
         Item newItem = new Item(name);
@@ -88,7 +88,7 @@ public class StartUI {
         System.out.println("New Item is created: " + newItem.getName());
     }
 
-    private void showMenu() {
+    public void showMenu() {
         String[] menu = {
                 "Add new Item", "Show all items", "Edit item",
                 "Delete item", "Find item by id", "Find items by name",
