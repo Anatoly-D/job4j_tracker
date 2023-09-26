@@ -1,42 +1,43 @@
 package ru.job4j.tracker;
 
 public class StartUI {
+    private final Output output;
+
+    StartUI(Output output) {
+        this.output = output;
+    }
+
     public void init(Input input, Tracker tracker, UserAction[] userActions) {
         boolean run = true;
         while (run) {
-            showMenu();
+            this.showMenu(userActions);
             int select = input.askInt("Select: ");
             UserAction action = userActions[select];
             run = action.execute(input, tracker);
         }
     }
 
-    public void showMenu() {
-        String[] menu = {
-                "Add new Item", "Show all items", "Edit item",
-                "Delete item", "Find item by id", "Find items by name",
-                "Exit Program"
-        };
-
-        System.out.println("Menu:");
-        for (int i = 0; i < menu.length; i++) {
-            System.out.println(i + ". " + menu[i]);
+    private void showMenu(UserAction[] actions) {
+        output.println("Menu.");
+        for (int index = 0; index < actions.length; index++) {
+            output.println(index + ". " + actions[index].name());
         }
     }
 
     public static void main(String[] args) {
+        Output output = new ConsoleOutput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         UserAction[] userActions = new UserAction[]{
-                new CreateAction(),
-                new ShowAllItemsAction(),
-                new ReplaceItemAction(),
-                new DeleteItemAction(),
-                new FindByIdAction(),
-                new FindByNameAction(),
+                new CreateAction(output),
+                new ShowAllItemsAction(output),
+                new ReplaceItemAction(output),
+                new DeleteItemAction(output),
+                new FindByIdAction(output),
+                new FindByNameAction(output),
                 new ExitAction()
         };
-        new StartUI().init(input, tracker, userActions);
+        new StartUI(output).init(input, tracker, userActions);
     }
 }
 
