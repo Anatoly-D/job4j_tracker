@@ -12,6 +12,10 @@ public class StartUI {
         while (run) {
             this.showMenu(userActions);
             int select = input.askInt("Select: ");
+            if (select < 0 || select >= userActions.length) {
+                output.println("Wrong input, you can select: 0 .. " + (userActions.length - 1));
+                continue;
+            }
             UserAction action = userActions[select];
             run = action.execute(input, tracker);
         }
@@ -26,7 +30,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] userActions = new UserAction[]{
                 new CreateAction(output),
