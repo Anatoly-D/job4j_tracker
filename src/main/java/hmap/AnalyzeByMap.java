@@ -33,7 +33,13 @@ public class AnalyzeByMap {
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         List<Label> labelList = new ArrayList<>();
-        Map<String, Integer> scoreMap = createMap(pupils);
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                scoreMap.put(subject.name(), scoreMap.getOrDefault(subject.name(), 0) + subject.score());
+            }
+        }
 
         for (Map.Entry<String, Integer> entry : scoreMap.entrySet()) {
             labelList.add(new Label(entry.getKey(), (double) entry.getValue() / (double) pupils.size()));
@@ -58,7 +64,13 @@ public class AnalyzeByMap {
 
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> labelList = new ArrayList<>();
-        Map<String, Integer> scoreMap = createMap(pupils);
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                scoreMap.put(subject.name(), scoreMap.getOrDefault(subject.name(), 0) + subject.score());
+            }
+        }
 
         for (Map.Entry<String, Integer> entry : scoreMap.entrySet()) {
             labelList.add(new Label(entry.getKey(), entry.getValue()));
@@ -66,19 +78,5 @@ public class AnalyzeByMap {
 
         labelList.sort(Comparator.naturalOrder());
         return labelList.get(labelList.size() - 1);
-    }
-
-    public static Map<String, Integer> createMap(List<Pupil> pupils) {
-        Map<String, Integer> scoreMap = new HashMap<>();
-        String subjectName;
-
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                subjectName = subject.name();
-                scoreMap.putIfAbsent(subjectName, 0);
-                scoreMap.replace(subjectName, scoreMap.get(subjectName) + subject.score());
-            }
-        }
-        return scoreMap;
     }
 }
