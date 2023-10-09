@@ -25,5 +25,6 @@ public class AttachmentSort {
                 return o1.getName().compareTo(o2.getName());
             }
         };
+        Comparator<String> cmpText = (left, right) -> left.compareTo(right);
     }
 }
