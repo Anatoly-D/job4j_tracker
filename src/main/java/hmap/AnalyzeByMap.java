@@ -37,7 +37,7 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scoreMap.put(subject.name(), scoreMap.getOrDefault(subject.name(), 0) + subject.score());
+                scoreMap.merge(subject.name(), subject.score(), (oldV, newV) -> oldV + subject.score());
             }
         }
 
@@ -68,7 +68,7 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scoreMap.put(subject.name(), scoreMap.getOrDefault(subject.name(), 0) + subject.score());
+                scoreMap.merge(subject.name(), subject.score(), (oldV, newV) -> oldV + subject.score());
             }
         }
 
